@@ -80,13 +80,13 @@ $.ajax({
 });
 
 // Later, use the access token to make requests to the Spotify Web API
-$(document).ready(function () {
-  const accessToken = localStorage.getItem("access_token");
+const accessToken = localStorage.getItem("access_token");
 
-  // Make a request to search for playlists related to a specific mood
-  let mood = 'happy'
+
+// Make a request to search for playlists related to a specific mood
+function callSpotify(moodEl) {
   $.ajax({
-    url: `https://api.spotify.com/v1/search?q=${mood}$&type=playlist&limit=20`,
+    url: `https://api.spotify.com/v1/search?q=${moodEl}$&type=playlist`,
     method: "GET",
     headers: {
       Authorization: "Bearer " + accessToken,
@@ -94,12 +94,12 @@ $(document).ready(function () {
     success: function (response) {
       const playlists = response.playlists.items;
       const songList = $("#song-list");
-  
+
       songList.empty();
       playlists.forEach(function (playlist) {
         const playlistId = playlist.id;
-        console.log(response)
-  
+        console.log(response);
+
         $.ajax({
           url: `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=1`,
           method: "GET",
@@ -108,11 +108,11 @@ $(document).ready(function () {
           },
           success: function (response) {
             const tracks = response.items;
-  
+
             tracks.forEach(function (track) {
               const songName = track.track.name;
               const artistName = track.track.artists[0].name;
-  
+
               songList.append(`<li>${songName} by ${artistName}</li>`);
             });
           },
@@ -126,7 +126,28 @@ $(document).ready(function () {
       console.error(error);
     },
   });
+};
+$("#submitButton").click(function (e) {
+  e.preventDefault();
+
+  let mood = $("#mood-input").val();
+  console.log(mood);
+  // Store the value of the mood in localStorage
+  localStorage.setItem("mood", mood);
+
+
+  // Set the value of the mood input field to the stored mood
+  $("#mood-input").val(localStorage.getItem("mood"));
+  console.log(localStorage.getItem("mood"));
+  callSpotify(mood);
+  // call in giphy api with mood parameter
 });
+
+// Refresh the value of the mood in localStorage on a daily basis
+setInterval(function () {
+  localStorage.removeItem("mood");
+}, 24 * 60 * 60 * 1000);
+// });
 
 // $.ajax({
 //   url: "https://accounts.spotify.com/api/token",
@@ -145,7 +166,7 @@ $(document).ready(function () {
 // });
 
 // $(document).ready(function () {
-//   const moodInput = $("#mood-input");
+//   const moodInput = $moodEl-input");
 //   const mood = localStorage.getItem("mood");
 //   if (mood) {
 //     moodInput.val(mood);
