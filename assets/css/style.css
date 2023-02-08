@@ -13,16 +13,14 @@ body {
     color: #ff7bac;
     font-size: 40px;
     background-color: #121212;
-    margin-left: 24px;
-
-
+    margin: 24px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /*Styling the header and header div changed to element */
 
 header {
     padding: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #121212;
     color: #ffffff;
 }
@@ -31,6 +29,7 @@ h1 {
     color: #ff7bac;
     display: inline-block;
     font-size: 48px;
+    font-weight: bold;
 }
 
 
@@ -41,8 +40,67 @@ a {
 
 p {
     font-size: 20px;
-    color: #ff7bac;
+    color: white;
 }
+
+.main__content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.main__content-about {
+    text-align: center;
+}
+
+#mood-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mood-input {
+    width: 500px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+
+#submitButton {
+    background-color: rgb(0, 0, 255);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 500;
+    height: 40px;
+    width: 200px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+
+#submitButton:hover,
+#submitButton:focus {
+  background-color: #2222ff;
+}
+
+
+
 
 
 footer {
