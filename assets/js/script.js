@@ -12,8 +12,7 @@
 
 // Display the GIF beside the generated tracks made by Spotify API
 
-<<<<<<< HEAD
-=======
+
 // $("#submitButton").click(function() {
 //   const mood = $("#moodInput").val();
 
@@ -225,4 +224,3 @@ setInterval(function () {
 //     setInterval(arguments.callee, 24 * 60 * 60 * 1000);
 //   }, 24 * 60 * 60 * 1000);
 // });
->>>>>>> bcef33c (Feature: JavaScript - Used Spotify API to callback the data to generate a list of songs that emit a similar feeling/vibe to the user input's mood)
