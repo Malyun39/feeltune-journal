@@ -12,7 +12,6 @@
 
 // Display the GIF beside the generated tracks made by Spotify API
 
-
 // $("#submitButton").click(function() {
 //   const mood = $("#moodInput").val();
 
@@ -81,7 +80,6 @@ $.ajax({
 // Later, use the access token to make requests to the Spotify Web API
 const accessToken = localStorage.getItem("access_token");
 
-
 // Make a request to search for playlists related to a specific mood
 function callSpotify(moodEl) {
   $.ajax({
@@ -125,7 +123,33 @@ function callSpotify(moodEl) {
       console.error(error);
     },
   });
-};
+}
+// Giphy API
+function giphyGIF() {
+  let moodGif = $("#mood-input").val();
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/search?q=" +
+    moodGif +
+    "&api_key=plJbzwD2vQw1sCr3SfPpLoJ3OsbcW4rz";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    let results = response.data
+    console.log(results);
+    for (var i = 0; i < 1; i++) {
+    let moodDiv = $('<div>');
+    let moodImage = $('<img>');
+    moodImage.attr('src', results[i].images.original.url);
+    moodDiv.append(moodImage);
+    $("#gifs-appear-here").append(moodDiv);
+    };
+  });
+}
+
+
 $("#submitButton").click(function (e) {
   e.preventDefault();
 
@@ -134,11 +158,11 @@ $("#submitButton").click(function (e) {
   // Store the value of the mood in localStorage
   localStorage.setItem("mood", mood);
 
-
   // Set the value of the mood input field to the stored mood
   $("#mood-input").val(localStorage.getItem("mood"));
   console.log(localStorage.getItem("mood"));
   callSpotify(mood);
+  giphyGIF();
   // call in giphy api with mood parameter
 });
 
@@ -146,7 +170,7 @@ $("#submitButton").click(function (e) {
 setInterval(function () {
   localStorage.removeItem("mood");
 }, 24 * 60 * 60 * 1000);
-// });
+
 
 // $.ajax({
 //   url: "https://accounts.spotify.com/api/token",
