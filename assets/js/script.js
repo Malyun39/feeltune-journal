@@ -11,3 +11,4 @@
 // Display the track information on the page, such as the track name, artist name, and album name.
 
 // Display the GIF beside the generated tracks made by Spotify API
+
