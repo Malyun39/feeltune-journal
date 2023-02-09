@@ -5,6 +5,10 @@
  
  ### Preview of application (interacted)
  ![Image](./assets/images/webpage-interacted.png)
+ 
+ ### Deployed Application
+ [Feeltune Journal](https://malyun39.github.io/feeltune-journal/)
+
 
 ## Description
 Feeltune is an app that allow users to express themselves through music. This application is created and built to find an opportunity for the individuals to find the right song depending on how they’re feeling on that certain period of time; our product will solve the troubles of hours of finding appropriate songs that the user can add into their playlists or listen on the daily.
